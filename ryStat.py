@@ -29,9 +29,11 @@ def check_args():
 
 	if len(sys.argv) == 1:
 		print (manual)
+		exit()
 	if len(sys.argv) > 1:
 		if sys.argv[1] not in option_array:
 			print (manual)
+			exit()
 
 def choose_option(option):
 	if option == '-mean':
@@ -83,9 +85,9 @@ def mean(show, num_list):
 	sum_equation += ('= ' + str(sum))
 	mean = sum / float(list_length)
 	if show:
-		print 'length n = ' + str(list_length)
-		print sum_equation
-		print str(sum) + '/' + str(list_length) + ' = ' + str(mean)
+		print ('length n = ' + str(list_length))
+		print (sum_equation)
+		print (str(sum) + '/' + str(list_length) + ' = ' + str(mean))
 	return mean
 
 def median(show, num_list):
@@ -101,13 +103,13 @@ def median(show, num_list):
 	else:
 		median = num_list[list_length / 2]
 	if show:
-		print 'Sorted list: ' +  str(sorted(num_list))
+		print ('Sorted list: ' +  str(sorted(num_list)))
 		if list_length % 2 == 0:
-			print 'The length is even. We must take the average of the middle 2 values.'
-			print '(' + str(left) + ' + ' + str(right) + ') / 2 = ' + str(median)
+			print ('The length is even. We must take the average of the middle 2 values.')
+			print ('(' + str(left) + ' + ' + str(right) + ') / 2 = ' + str(median))
 		else:
-			print 'The length is odd. Take the middle value.'
-			print median
+			print ('The length is odd. Take the middle value.')
+			print (median)
 	return median
 
 def var_and_sd(show, num_list):
@@ -115,22 +117,22 @@ def var_and_sd(show, num_list):
 	mn = mean(False, num_list)
 	numerator = 0
 	if show:
-		print 'xi | xi-xbar | (xi-xbar)^2'
-		print '--------------------------'
+		print ('xi | xi-xbar | (xi-xbar)^2')
+		print ('--------------------------')
 	for i in range(list_length):
 		xi = num_list[i]
 		xi_minus = xi - mn
 		xi_minus_squared = math.pow(xi_minus, 2)
 		if show:
-			print str(xi) + '    ' + str('%.2f' % xi_minus) + '     ' + str('%.2f' % xi_minus_squared)
+			print (str(xi) + '    ' + str('%.2f' % xi_minus) + '     ' + str('%.2f' % xi_minus_squared))
 		numerator += xi_minus_squared
 	variance = numerator / float(list_length - 1)
 	sd = math.sqrt(variance)
 	if show:
-		print '--------------------------'
-		print '               sum = ' + str('%.2f' % numerator)
-		print '               variance = ' + str('%.2f' % numerator) + '/' + str(list_length - 1) + ' = ' + str('%.2f' % variance) 
-		print 'The square root of ' + str('%.2f' % variance) + ' = standard deviation = ' + str('%.2f' % sd)
+		print ('--------------------------')
+		print ('               sum = ' + str('%.2f' % numerator))
+		print ('               variance = ' + str('%.2f' % numerator) + '/' + str(list_length - 1) + ' = ' + str('%.2f' % variance))
+		print ('The square root of ' + str('%.2f' % variance) + ' = standard deviation = ' + str('%.2f' % sd))
 	return[variance, sd]
 
 # It was at this point that I realized I had just eaten an entire bear bottle of honey.
@@ -143,8 +145,8 @@ def trimmed_mean(show, num_list, percent):
 		del num_list[len(num_list) - 1]
 		del num_list[0]
 	if show:
-		print '[Steps under construction]'
-		print mean(False, num_list)
+		print ('[Steps under construction]')
+		print (mean(False, num_list))
 	return mean(False, num_list)
 
 def stem_and_leaf(show, num_list):
@@ -167,7 +169,7 @@ def stem_and_leaf(show, num_list):
 		except IndexError:
 			pass
 	if show:
-		print stem_leaf
+		print (stem_leaf)
 	return stem_leaf
 
 # FUNCTIONS UNDER CONSTRUCTION
